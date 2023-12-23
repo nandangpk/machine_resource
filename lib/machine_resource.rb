@@ -13,8 +13,8 @@ module MachineResource
     cpu_usage
   end
 
-  def self.memory(unit)
-    return "Invalid unit! accept: ['MB', 'GB']" if unit.upcase != 'MB' && unit.upcase != 'GB'
+  def self.memory(unit = "")
+    return "Invalid or missing unit parameter, accept: ['MB', 'GB']" if unit.upcase != 'MB' && unit.upcase != 'GB'
     memory_usage = nil
     data = `top -bn1 -1`.split("\n")
     data.each do |d|
