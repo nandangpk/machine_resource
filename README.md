@@ -6,8 +6,7 @@ A lightweight Ruby on Rails gem to gather information about machine resource usa
 * Linux
 
 ## Requirements
-* procps-ng (Linux package)
-* sysstat (Linux package)
+---todo
 
 ## Installation
 ```ruby
@@ -29,7 +28,7 @@ gem 'machine_resource', git: 'https://github.com/nandangpk/machine_resource'
 ```
 
 ## Limitations
-This gem basically execute Linux command `sar` to get CPU usage and `top` to get memory usage. It will make this gem support only Linux based operating system
+This gem basically collect data from `/proc/stat` to get CPU usage and `/proc/meminfo` to get memory usage. It will make this gem support only Linux based operating system
 
 ## Tested on:
 * Debian 10
