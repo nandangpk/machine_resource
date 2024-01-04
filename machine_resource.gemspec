@@ -2,6 +2,9 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "machine_resource/version"
+require File.expand_path('../ext/machine_resource/memory.so', __FILE__)
+require File.expand_path('../ext/machine_resource/cpu.so', __FILE__)
+
 
 Gem::Specification.new do |spec|
   spec.name          = "machine_resource"
@@ -33,11 +36,14 @@ Gem::Specification.new do |spec|
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
+  
+  spec.files += Dir["ext/**/*"]
+
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = ">= 0.0.0"
   spec.add_dependency 'rails', '>= 1.0.0'
-
+  spec.add_dependency 'ffi'
 end
